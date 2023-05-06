@@ -23,8 +23,7 @@
 		4F4CB30B2A05392300BEF4E6 /* chocolate_donut.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 4F4CB2FE2A05392300BEF4E6 /* chocolate_donut.mtl */; };
 		4F4CB30C2A05392300BEF4E6 /* chocolate_donut.obj in Resources */ = {isa = PBXBuildFile; fileRef = 4F4CB2FF2A05392300BEF4E6 /* chocolate_donut.obj */; };
 		4F4CB30D2A05392300BEF4E6 /* cupcakes.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 4F4CB3002A05392300BEF4E6 /* cupcakes.mtl */; };
-		4F4CB30E2A05392300BEF4E6 /* Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB3022A05392300BEF4E6 /* Math.cpp */; };
-		4F4CB30F2A05392300BEF4E6 /* Math.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4F4CB3032A05392300BEF4E6 /* Math.hpp */; };
+		4F4CB30F2A05392300BEF4E6 /* Math.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4F4CB3032A05392300BEF4E6 /* Math.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
 		4F4CB3102A05392300BEF4E6 /* DynamicMTKView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB3042A05392300BEF4E6 /* DynamicMTKView.mm */; };
 		4F4CB3132A05396800BEF4E6 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F4CB3122A05396800BEF4E6 /* AppKit.framework */; platformFilters = (maccatalyst, macos, ); };
 		4F4CB3152A05396C00BEF4E6 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F4CB3142A05396C00BEF4E6 /* MetalKit.framework */; };
@@ -84,7 +83,6 @@
 		4F4CB2FE2A05392300BEF4E6 /* chocolate_donut.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = chocolate_donut.mtl; sourceTree = "<group>"; };
 		4F4CB2FF2A05392300BEF4E6 /* chocolate_donut.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = chocolate_donut.obj; sourceTree = "<group>"; };
 		4F4CB3002A05392300BEF4E6 /* cupcakes.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cupcakes.mtl; sourceTree = "<group>"; };
-		4F4CB3022A05392300BEF4E6 /* Math.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Math.cpp; sourceTree = "<group>"; };
 		4F4CB3032A05392300BEF4E6 /* Math.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Math.hpp; sourceTree = "<group>"; };
 		4F4CB3042A05392300BEF4E6 /* DynamicMTKView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DynamicMTKView.mm; sourceTree = "<group>"; };
 		4F4CB3122A05396800BEF4E6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -218,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				4F4CB3032A05392300BEF4E6 /* Math.hpp */,
-				4F4CB3022A05392300BEF4E6 /* Math.cpp */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -388,7 +385,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F4CB30E2A05392300BEF4E6 /* Math.cpp in Sources */,
 				4F4CB31F2A053A4200BEF4E6 /* ExplorerRenderer.mm in Sources */,
 				4F4CB3102A05392300BEF4E6 /* DynamicMTKView.mm in Sources */,
 				4F4CB3052A05392300BEF4E6 /* UIWindowScene+DidChangeScreenNotification.mm in Sources */,

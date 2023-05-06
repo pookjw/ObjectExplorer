@@ -13,12 +13,13 @@ NS_HEADER_AUDIT_BEGIN(nullability, sendability)
 
 class ObjectModel {
 public:
-    ObjectModel(id<MTLDevice> device, ObjectModelType modelType, NSError * __autoreleasing * _Nullable error);
+    ObjectModel(MTKView *mtkView, id<MTLDevice> device, id<MTLLibrary> library, ObjectModelType modelType, NSError * __autoreleasing * _Nullable error);
     void drawInRenderEncoder(id<MTLRenderCommandEncoder> renderEncoder, CGSize size);
 private:
-    
     NSArray<MDLMesh *> *mdlMeshes;
     NSArray<MTKMesh *> *mtkMeshes;
+    id<MTLDevice> device;
+    id<MTLRenderPipelineState> pipelineState;
 };
 
 NS_HEADER_AUDIT_END(nullability, sendability)

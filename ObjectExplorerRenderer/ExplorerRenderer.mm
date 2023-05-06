@@ -61,7 +61,7 @@
         self.device = device;
         self.commandQueue = commandQueue;
         self.library = library;
-        self.objectModel = std::shared_ptr<ObjectModel>(new ObjectModel(device, modelType, &error));
+        self.objectModel = std::shared_ptr<ObjectModel>(new ObjectModel(mtkView, device, library, modelType, &error));
         
         if (error) {
             completionHandler(error);
