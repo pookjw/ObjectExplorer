@@ -9,5 +9,7 @@
 
 typedef NS_ENUM(NSUInteger, ObjectModelType) {
     ObjectModelTypeCupcakes,
-    ObjectModelTypeChocolateDonut
+    ObjectModelTypeChocolateDonut,
+    ObjectModelTypeRoom,
+    ObjectModelTypeHand
 };

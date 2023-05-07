@@ -10,7 +10,7 @@
 namespace ObjectExplorer {
 enum Attributes {
     Position = 0,
-    Normal = 1
+    Normal = 1,
 };
 
 enum BufferIndices {
@@ -22,5 +22,8 @@ struct Data {
     const float width;
     const float height;
     const float scale;
+    const float panX;
+    const float panY;
+    const simd_float4x4 viewMatrix;
 };
 };

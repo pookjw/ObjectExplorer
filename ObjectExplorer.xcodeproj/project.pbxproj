@@ -40,6 +40,10 @@
 		4F4CB32D2A053F2600BEF4E6 /* ObjectModel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4F4CB32B2A053F2600BEF4E6 /* ObjectModel.hpp */; };
 		4F4CB3312A056A8400BEF4E6 /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F4CB3302A056A8400BEF4E6 /* ModelIO.framework */; };
 		4F4CB3342A056BDD00BEF4E6 /* common.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4F4CB3332A056B8B00BEF4E6 /* common.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
+		4FE84B052A07BC72005E36D1 /* blender_35_splash_nicole_morena.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 4FE84B032A07BC72005E36D1 /* blender_35_splash_nicole_morena.mtl */; };
+		4FE84B062A07BC72005E36D1 /* blender_35_splash_nicole_morena.obj in Resources */ = {isa = PBXBuildFile; fileRef = 4FE84B042A07BC72005E36D1 /* blender_35_splash_nicole_morena.obj */; };
+		4FE84B092A07BD31005E36D1 /* auto_masking_options.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 4FE84B072A07BD31005E36D1 /* auto_masking_options.mtl */; };
+		4FE84B0A2A07BD31005E36D1 /* auto_masking_options.obj in Resources */ = {isa = PBXBuildFile; fileRef = 4FE84B082A07BD31005E36D1 /* auto_masking_options.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +106,10 @@
 		4F4CB32E2A05679A00BEF4E6 /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = DEVELOPER_DIR; };
 		4F4CB3302A056A8400BEF4E6 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/ModelIO.framework; sourceTree = DEVELOPER_DIR; };
 		4F4CB3332A056B8B00BEF4E6 /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
+		4FE84B032A07BC72005E36D1 /* blender_35_splash_nicole_morena.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blender_35_splash_nicole_morena.mtl; sourceTree = "<group>"; };
+		4FE84B042A07BC72005E36D1 /* blender_35_splash_nicole_morena.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blender_35_splash_nicole_morena.obj; sourceTree = "<group>"; };
+		4FE84B072A07BD31005E36D1 /* auto_masking_options.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = auto_masking_options.mtl; sourceTree = "<group>"; };
+		4FE84B082A07BD31005E36D1 /* auto_masking_options.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = auto_masking_options.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +216,10 @@
 				4F4CB2FD2A05392300BEF4E6 /* cupcakes.obj */,
 				4F4CB2FE2A05392300BEF4E6 /* chocolate_donut.mtl */,
 				4F4CB2FF2A05392300BEF4E6 /* chocolate_donut.obj */,
+				4FE84B032A07BC72005E36D1 /* blender_35_splash_nicole_morena.mtl */,
+				4FE84B042A07BC72005E36D1 /* blender_35_splash_nicole_morena.obj */,
+				4FE84B072A07BD31005E36D1 /* auto_masking_options.mtl */,
+				4FE84B082A07BD31005E36D1 /* auto_masking_options.obj */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -362,8 +374,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F4CB30C2A05392300BEF4E6 /* chocolate_donut.obj in Resources */,
+				4FE84B092A07BD31005E36D1 /* auto_masking_options.mtl in Resources */,
 				4F4CB30A2A05392300BEF4E6 /* cupcakes.obj in Resources */,
+				4FE84B052A07BC72005E36D1 /* blender_35_splash_nicole_morena.mtl in Resources */,
+				4FE84B062A07BC72005E36D1 /* blender_35_splash_nicole_morena.obj in Resources */,
 				4F4CB30D2A05392300BEF4E6 /* cupcakes.mtl in Resources */,
+				4FE84B0A2A07BD31005E36D1 /* auto_masking_options.obj in Resources */,
 				4F4CB30B2A05392300BEF4E6 /* chocolate_donut.mtl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

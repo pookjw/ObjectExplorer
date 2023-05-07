@@ -8,8 +8,9 @@
 #import <ObjectExplorerRenderer/ExplorerRenderer.h>
 #import <ObjectExplorerRenderer/constants.h>
 #import <ObjectExplorerRenderer/ObjectModel.hpp>
-#import <optional>
 #import <memory>
+#import <atomic>
+#import <optional>
 
 @interface ExplorerRenderer () <MTKViewDelegate>
 @property (strong) NSOperationQueue *queue;
@@ -33,7 +34,7 @@
 }
 
 - (void)setupWithMTKView:(MTKView *)mtkView modelType:(ObjectModelType)modelType completionHandler:(void (^)(NSError * _Nullable __autoreleasing))completionHandler {
-    [self.queue addOperationWithBlock:^{
+//    [self.queue addOperationWithBlock:^{
         if (self.mtkView) {
             completionHandler([NSError errorWithDomain:ObjectExplorerRendererErrorDomain code:ObjectExplorerRendererErrorAlreadySetup userInfo:nil]);
             return;
@@ -69,6 +70,24 @@
         }
         
         completionHandler(nil);
+//    }];
+}
+
+- (void)didChangeMagnificationWithScale:(CGFloat)scale {
+    [self.queue addOperationWithBlock:^{
+        self.objectModel.value().get()->didChangeMagnification(scale);
+    }];
+}
+
+- (void)didEndMagnificationWithScale:(CGFloat)scale {
+    [self.queue addOperationWithBlock:^{
+        self.objectModel.value().get()->didEndMagnification(scale);
+    }];
+}
+
+- (void)didChangePanningWithX:(CGFloat)x y:(CGFloat)y {
+    [self.queue addOperationWithBlock:^{
+        self.objectModel.value().get()->didChangePanning(x, y);
     }];
 }
 
@@ -82,7 +101,7 @@
 - (void)renderWithMTKView:(MTKView *)mtkView size:(std::optional<CGSize>)size {
     const CGSize drawableSize = size.value_or(mtkView.currentDrawable.layer.drawableSize);
     
-    [self.queue addOperationWithBlock:^{
+//    [self.queue addOperationWithBlock:^{
         if (!self->_objectModel.has_value()) return;
         
         MTLCommandBufferDescriptor *commandBufferDescriptor = [MTLCommandBufferDescriptor new];
@@ -97,15 +116,16 @@
         self->_objectModel.value().get()->drawInRenderEncoder(renderEncoder, drawableSize);
         
         [renderEncoder endEncoding];
-        [commandBuffer presentDrawable:mtkView.currentDrawable];
         
         dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         [commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> _Nonnull buffer) {
             dispatch_semaphore_signal(semaphore);
         }];
+        
+        [commandBuffer presentDrawable:mtkView.currentDrawable];
         [commandBuffer commit];
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    }];
+//    }];
 }
 
 - (void)mtkView:(nonnull MTKView *)view drawableSizeWillChange:(CGSize)size {

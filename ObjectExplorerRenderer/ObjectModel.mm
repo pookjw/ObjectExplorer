@@ -8,10 +8,13 @@
 #import <ObjectExplorerRenderer/ObjectModel.hpp>
 #import <ObjectExplorerRenderer/constants.h>
 #import <ObjectExplorerRenderer/common.hpp>
+#import <ObjectExplorerRenderer/Math.hpp>
 
 ObjectModel::ObjectModel(MTKView *mtkView, id<MTLDevice> device, id<MTLLibrary> library, ObjectModelType modelType, NSError * __autoreleasing * _Nullable error) {
     NSBundle *bundle = [NSBundle bundleWithIdentifier:ObjectExplorerRendererBundleIdentifier];
     NSURL *objURL;
+    
+    
     
     switch (modelType) {
         case ObjectModelTypeCupcakes:
@@ -19,6 +22,12 @@ ObjectModel::ObjectModel(MTKView *mtkView, id<MTLDevice> device, id<MTLLibrary> 
             break;
         case ObjectModelTypeChocolateDonut:
             objURL = [bundle URLForResource:@"chocolate_donut" withExtension:@"obj"];
+            break;
+        case ObjectModelTypeRoom:
+            objURL = [bundle URLForResource:@"blender_35_splash_nicole_morena" withExtension:@"obj"];
+            break;
+        case ObjectModelTypeHand:
+            objURL = [bundle URLForResource:@"auto_masking_options" withExtension:@"obj"];
             break;
         default:
             [NSException raise:NSInternalInconsistencyException format:@"Not supported type."];
@@ -52,6 +61,8 @@ ObjectModel::ObjectModel(MTKView *mtkView, id<MTLDevice> device, id<MTLLibrary> 
     if (*error) {
         return;
     }
+    
+    NSLog(@"Loaded!");
     
     //
     
@@ -90,15 +101,23 @@ ObjectModel::ObjectModel(MTKView *mtkView, id<MTLDevice> device, id<MTLLibrary> 
     this->mtkMeshes = mtkMeshes;
     this->device = device;
     this->pipelineState = pipelineState;
+    
+    this->lastScale.store(1.f);
+    this->totalScale.store(1.f);
+    this->totalPanX.store(0.f);
+    this->totalPanY.store(0.f);
 }
 
 void ObjectModel::drawInRenderEncoder(id<MTLRenderCommandEncoder> renderEncoder, CGSize size) {
     [renderEncoder setRenderPipelineState:this->pipelineState];
-    matrix_identity_float4x4;
-    ObjectExplorer::Data data {
+    
+    const ObjectExplorer::Data data {
         .width = static_cast<float>(size.width),
         .height = static_cast<float>(size.height),
-        .scale = 2.f
+        .scale = static_cast<float>(this->totalScale.load()),
+        .panX = static_cast<float>(this->totalPanX.load()),
+        .panY = static_cast<float>(this->totalPanY.load()),
+        .viewMatrix = simd_inverse(Math::translationMatrix({0.f, 0.f, -3.f}))
     };
     
     [renderEncoder setVertexBytes:&data length:sizeof(data) atIndex:ObjectExplorer::DataBuffer];
@@ -116,4 +135,17 @@ void ObjectModel::drawInRenderEncoder(id<MTLRenderCommandEncoder> renderEncoder,
                                indexBufferOffset:obj.indexBuffer.offset];
         }];
     }];
+}
+
+void ObjectModel::didChangeMagnification(CGFloat scale) {
+    this->totalScale.store(this->lastScale.load() + scale);
+}
+
+void ObjectModel::didEndMagnification(CGFloat scale) {
+    this->lastScale.store(this->totalScale);
+}
+
+void ObjectModel::didChangePanning(CGFloat x, CGFloat y) {
+    this->totalPanX.store(std::fmaf(this->totalPanX.load(), 1.f, x));
+    this->totalPanY.store(std::fmaf(this->totalPanY.load(), 1.f, y));
 }
